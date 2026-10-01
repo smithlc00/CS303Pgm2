@@ -1,5 +1,4 @@
 
-import java.util.Scanner;
 import java.util.*;
 import java.io.*;
 
@@ -16,9 +15,20 @@ public class Functions {
                 String inputRecord = inFile.nextLine();
                 try{
                 //set up data 
-
+                    String[] parts = inputRecord.split(",");
+                    int duration = Integer.parseInt(parts[0]);
+                    String showName = parts[1];
 
                 //add to map
+                // Note: I started with this first. The containsKey() and put() methods came from the lecture slides.
+                    if (TVList.containsKey(duration)) {
+                        TVList.get(duration).add(showName);
+                    } else {
+                        ArrayList<String> newList = new ArrayList<>();
+                        newList.add(showName);
+                        TVList.put(duration, newList);
+                    }
+                    
                 }
                 catch (Exception e){
                     System.out.println("Error in input record");
